@@ -1,21 +1,34 @@
 require 'rails_helper'
 
 describe 'user dashboard' do
-  it 'shows all movies for a certain user' do
-    visit dashboard_path
-    expect(current_path).to eq('/login')
-    expect(page).to have_content('You need to log in to view your dashboard buddy')
+  before(:each) do
+    @user1 = create(:user)
+    @user2 = create(:user)
+    @user3 = create(:user)
 
-    user = User.create(id: 99, email: "rusty@dusty.com", password: "137952")
+    Friendship.create(user: @user1, friend: @user2)
+    Friendship.create(user: @user1, friend: @user3)
 
-    fill_in :email, with: user.email
-    fill_in :password, with: user.password
+    visit root_path
+
+    click_link 'Log In'
+
+    fill_in :email, with: @user1.email
+    fill_in :password, with: @user1.password
+
     click_button 'Log In'
+  end
 
-    expect(current_path).to eq(root_path)
-    expect(page).not_to have_content('You need to log in to view your dashboard buddy')
+  it 'shows a welcome message, Discover button, Friends, and Parties sections' do
 
-    click_link 'Dashboard'
-    expect(current_path).to eq(dashboard_path)
+    visit dashboard_path
+
+    expect(page).to have_content("Welcome #{@user1.username}!")
+    expect(page).to have_link("Discover Movies")
+    expect(page).to have_content("Friends")
+    expect(page).to have_content(@user2.username)
+    expect(page).to have_content(@user3.username)
+    expect(page).to have_content("Parties")
+
   end
 end

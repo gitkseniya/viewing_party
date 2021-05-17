@@ -1,8 +1,7 @@
 FactoryBot.define do
-  factory :user do
-    email { "MyString" }
-    username { "MyString" }
-    password_digest { "MyString" }
-    host { false }
+  factory :user, class: User do
+    email { Faker::Internet.email }
+    username { Faker::Color.color_name }
+    password { Faker::Internet.password }
   end
 end
