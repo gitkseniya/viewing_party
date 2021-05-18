@@ -5,3 +5,5 @@
   <%= f.text_field :search %>
   <%= f.submit 'Search' %>
 <% end %>
+
+<%= button_to "Upcoming Movies", "/movies", method: :get, params: {upcoming_movies: true} %>

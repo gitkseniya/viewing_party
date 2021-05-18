@@ -37,5 +37,14 @@ RSpec.describe "dashboard discover movies" do
       expect(current_path).to eq(movies_path)
       expect(page).to have_content("Nobody")
     end
+
+    it "shows 3 upcoming movies", :vcr do
+      visit discover_path
+
+      expect(page).to have_button("Upcoming Movies")
+      click_button("Upcoming Movies")
+
+      expect(current_path).to eq(movies_path)
+    end
   end
 end
