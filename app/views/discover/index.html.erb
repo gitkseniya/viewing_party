@@ -1,7 +1,0 @@
-<h1>Discover Movies</h1>
-<%= button_to "Top 40 Movies", "/movies", method: :get, params: {top_40: true} %>
-
-<%= form_with url: movies_path, params: {search: true}, method: :get, local: true do |f| %>
-  <%= f.text_field :search %>
-  <%= f.submit 'Search' %>
-<% end %>
