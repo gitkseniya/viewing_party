@@ -1,5 +1,4 @@
 class MovieService
-
   def self.top_40
     token = ENV['movie_token']
 
@@ -18,5 +17,7 @@ class MovieService
     response = Faraday.get("https://api.themoviedb.org/3/search/movie?api_key=#{token}&language=en-US&query=#{name}&page=1")
 
     result = JSON.parse(response.body, symbolize_names: true)
+
+    result[:results]
   end
 end
