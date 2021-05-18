@@ -2,8 +2,15 @@
 <%= link_to "Discover Movies", "/discover" %>
 
 <h2>Friends</h2>
-<% @friends.each do |friend| %>
+<% current_user.friends.each do |friend| %>
   <%= friend.username %><br>
+<% end %>
+
+<h3>Add Friend</h3>
+<%= form_with url: friendship_path, method: :post, local: true do |f| %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <%= f.submit "Add Friend" %>
 <% end %>
 
 <h2>Parties</h2>

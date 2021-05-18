@@ -5,6 +5,7 @@ describe 'user dashboard' do
     @user1 = create(:user)
     @user2 = create(:user)
     @user3 = create(:user)
+    @user4 = create(:user)
 
     Friendship.create(user: @user1, friend: @user2)
     Friendship.create(user: @user1, friend: @user3)
@@ -20,7 +21,6 @@ describe 'user dashboard' do
 
     click_button 'Log In'
 
-
     visit dashboard_path
 
     expect(page).to have_content("Welcome #{@user1.username}!")
@@ -35,6 +35,23 @@ describe 'user dashboard' do
     visit dashboard_path
 
     expect(page).to have_content("You need to log in to view your dashboard buddy")
+  end
 
-    end
+  it 'can add friends' do
+    click_link 'Log In'
+
+    fill_in :email, with: @user1.email
+    fill_in :password, with: @user1.password
+
+    click_button 'Log In'
+
+    visit dashboard_path
+
+    expect(page).to have_field(:email)
+    fill_in :email, with: @user4.email
+    expect(page).to have_button("Add Friend")
+    click_button("Add Friend")
+    expect(current_path).to eq(dashboard_path)
+    expect(page).to have_content(@user4.username)
+  end
 end

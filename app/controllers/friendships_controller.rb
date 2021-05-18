@@ -1,7 +1,7 @@
 class FriendshipsController < ApplicationController
   def create
-    user = User.find(params[:user_id])
-    friend = User.find_by(email: params[:email]))
+    user = current_user
+    friend = User.find_by(email: params[:email])
 
     if friend
       Friendship.create(user_id: user.id, friend_id: friend.id)
@@ -9,6 +9,6 @@ class FriendshipsController < ApplicationController
       flash[:error] = 'Unable to create friendship'
     end
 
-    redirect_to dashboard_index_path
+    redirect_to dashboard_path
   end
 end
