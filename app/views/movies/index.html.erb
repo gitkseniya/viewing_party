@@ -7,12 +7,12 @@
   <%= f.submit 'Search' %>
 <% end %>
 
-<ul><% @movies.map do |movie|  %>
+<ol><% @movies.map do |movie|  %>
   <li><%= link_to "#{movie[:title]}", "/movies/#{movie[:id]}" %><br>
       Rating: <%= movie[:vote_average] %>
   <% end  %><br>
 
 
 <br>
-</ul>
+</ol>
 <%= link_to "Back to Discover Movies", "/discover" %>
