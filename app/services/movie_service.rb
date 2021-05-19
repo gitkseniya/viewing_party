@@ -1,23 +1,26 @@
 class MovieService
   class << self
     def top_40
-      token = ENV['movie_token']
+      response1 = conn.get("/3/movie/top_rated", params: { "page": 1} )
+      response2 = conn.get("/3/movie/top_rated", params: { "page": 2} )
 
-      response1 = Faraday.get("https://api.themoviedb.org/3/movie/top_rated?api_key=#{token}&page=1&language=en-US")
-      response2 = Faraday.get("https://api.themoviedb.org/3/movie/top_rated?api_key=#{token}&page=2&language=en-US")
+      result1 = parse_data(response1)
+      result2 = parse_data(response1)
 
-      result1 = JSON.parse(response1.body, symbolize_names: true)
-      result2 = JSON.parse(response2.body, symbolize_names: true)
       result1[:results] + result2[:results]
     end
 
     def search_result(name)
-      token = ENV['movie_token']
+      conn1 = Faraday.new(url: 'https://api.themoviedb.org', params: { "api_key": ENV['movie_token'], "language": 'en-US', "query": name, "page": 1 })
+      conn2 = Faraday.new(url: 'https://api.themoviedb.org', params: { "api_key": ENV['movie_token'], "language": 'en-US', "query": name, "page": 2 })
 
-      response = Faraday.get("https://api.themoviedb.org/3/search/movie?api_key=#{token}&language=en-US&query=#{name}&page=1")
+      response1 = conn1.get("/3/search/movie")
+      response2 = conn2.get("/3/search/movie")
 
-      result = JSON.parse(response.body, symbolize_names: true)
-      result[:results]
+      result1 = parse_data(response1)
+      result2 = parse_data(response2)
+
+      result1[:results] + result2[:results]
     end
 
     def movie_info(movie_id)
