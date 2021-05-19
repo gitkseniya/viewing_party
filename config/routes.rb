@@ -15,9 +15,6 @@ Rails.application.routes.draw do
 
     resources :movies, only: [:index, :show]
 
-    # get "/movies", to: "movies#index"
-    # get "/movies/:id", to: "movies#show"
-
     post '/search', to: 'movies#search'
 
     post '/friendship', to: 'friendships#create'

@@ -4,5 +4,7 @@ class MovieFacade
       movie = MovieService.movie_info(id)
       Movie.new(movie)
     end
+
+
   end
 end

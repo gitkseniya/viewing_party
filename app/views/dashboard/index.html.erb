@@ -1,9 +1,9 @@
-<h1>Welcome <%= @current_user.username %>!</h1>
+<h1>Welcome <%= @current_user.email %>!</h1>
 <%= link_to "Discover Movies", "/discover" %>
 
 <h2>Friends</h2>
 <% current_user.friends.each do |friend| %>
-  <%= friend.username %><br>
+  <%= friend.email %><br>
 <% end %>
 
 <h3>Add Friend</h3>
@@ -14,3 +14,12 @@
 <% end %>
 
 <h2>Parties</h2>
+<% @current_user.parties.each do |party| %>
+  <%= party.name %><br>
+  <p>invited Friends </p
+  <b><%= @current_user.email %></b><br>
+    <% party.friends.each do |friend| %>
+      <%= friend.email %><br>
+    <% end %>
+    Host: <%= party.host.email %>
+<% end %>

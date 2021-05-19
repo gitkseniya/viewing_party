@@ -23,11 +23,11 @@ describe 'user dashboard' do
 
     visit dashboard_path
 
-    expect(page).to have_content("Welcome #{@user1.username}!")
+    expect(page).to have_content("Welcome #{@user1.email}!")
     expect(page).to have_link("Discover Movies")
     expect(page).to have_content("Friends")
-    expect(page).to have_content(@user2.username)
-    expect(page).to have_content(@user3.username)
+    expect(page).to have_content(@user2.email)
+    expect(page).to have_content(@user3.email)
     expect(page).to have_content("Parties")
   end
 
@@ -52,7 +52,7 @@ describe 'user dashboard' do
     expect(page).to have_button("Add Friend")
     click_button("Add Friend")
     expect(current_path).to eq(dashboard_path)
-    expect(page).to have_content(@user4.username)
+    expect(page).to have_content(@user4.email)
   end
 
   it 'shows error message when friendship cannot be created' do
