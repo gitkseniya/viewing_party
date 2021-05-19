@@ -8,8 +8,8 @@ class User < ApplicationRecord
               association_foreign_key: :friend_id
 
   has_many :parties, class_name: 'Party',
-            foreign_key: :host_id,
-            inverse_of: :host
+                     foreign_key: :host_id,
+                     inverse_of: :host
 
 
   validates :email, uniqueness: true, presence: true

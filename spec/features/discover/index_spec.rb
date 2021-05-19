@@ -31,11 +31,34 @@ RSpec.describe "dashboard discover movies" do
       visit discover_path
 
       expect(page).to have_field(:search)
+      click_button("Search")
+
+      expect(page).to have_content("Please fill in movie title")
+      expect(current_path).to eq(discover_path)
+
       fill_in :search, with: "Nobody"
       click_button("Search")
 
       expect(current_path).to eq(movies_path)
       expect(page).to have_content("Nobody")
+    end
+
+    it "returns no result and redirects to discover page if there are no matches", :vcr do
+      visit discover_path
+
+      fill_in :search, with: "Ughgh1ghghg3hghghghgh"
+      click_button("Search")
+
+      expect(current_path).to eq(movies_path)
+    end
+
+    it "shows upcoming movies", :vcr do
+      visit discover_path
+
+      expect(page).to have_button("Upcoming Movies")
+      click_button("Upcoming Movies")
+
+      expect(current_path).to eq(movies_path)
     end
   end
 end

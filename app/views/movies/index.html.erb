@@ -1,7 +1,18 @@
-<h1>Top 40 Movies</h1>
+<h1>Discover Movies</h1>
+
+<%= button_to "Top 40 Movies", "/movies", method: :get, params: {top_forty: true} %>
+
+<%= form_with url: movies_path, params: {search: true}, method: :get, local: true do |f| %>
+  <%= f.text_field :search %>
+  <%= f.submit 'Search' %>
+<% end %>
+
 <ol><% @movies.map do |movie|  %>
-  <li><%= movie[:title] %>
-  <li>Rating: <%= movie[:vote_average] %>
-<% end  %><br>
+  <li><%= link_to "#{movie[:title]}", "/movies/#{movie[:id]}" %><br>
+      Rating: <%= movie[:vote_average] %>
+  <% end  %><br>
+
+
+<br>
 </ol>
 <%= link_to "Back to Discover Movies", "/discover" %>

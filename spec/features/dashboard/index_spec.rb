@@ -54,4 +54,20 @@ describe 'user dashboard' do
     expect(current_path).to eq(dashboard_path)
     expect(page).to have_content(@user4.username)
   end
+
+  it 'shows error message when friendship cannot be created' do
+    click_link 'Log In'
+
+    fill_in :email, with: @user1.email
+    fill_in :password, with: @user1.password
+
+    click_button 'Log In'
+
+    visit dashboard_path
+
+    fill_in :email, with: "aaa@a.com"
+    click_button("Add Friend")
+
+    expect(page).to have_content('Unable to create friendship')
+  end
 end

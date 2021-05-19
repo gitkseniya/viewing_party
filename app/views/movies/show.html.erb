@@ -1,33 +1,28 @@
-
-<h1>Welcome, <%= current_user.username %>!</h1>
-
 <%= link_to "Create a Viewing Party", new_party_path(api_movie_id: @movie[:id]) %><br>
-
 <h2><%= @movie[:title] %></h2>
-
 <section>
   <p>
-    Vote Average:</b> <%= @movie[:vote_average] %>
-    Runtime: <%= @movie[:runtime] %>hr <%= @movie[:runtime] %>min
-    Genre: <%= @movie[:genres].map do |genre_data| %>
-            <% genre_data[:name] %>
+    <h3>Alternative Titles: </h3><% @alternative_titles.map do |alt_title| %>
+      <%= alt_title[:title] %><br>
+    <% end %>
+
+    <h3>Vote Average: </h3><%= @movie[:vote_average] %>
+    <h3>Runtime: </h3><%= @movie[:runtime] / 60 %>hr <%= @movie[:runtime] % 60 %>min
+    <h3>Genre: </h3><%= @movie[:genres].map do |genre_data| %>
+        <% genre_data[:name] %>
           <% end %>
-  </p>
+    <h3>Summary: </h3><%= @movie[:overview] %>
 </section>
-
-<section class="summary">
-Summary: <%= @movie[:overview] %>
-</section>
-
 <section class="casts">
-  Cast:
+  <h3>Cast: </h3>
+<% @casts.map do |member| %>
+  <%= member[:name] %>, as: <%= member[:character] %><br>
+<% end %>
 </section>
+<h3>Reviews: </h3>
+<%= @reviews.count %> review(s)
+<br><br>
 
-<section class="reviews">
-  <p> <%= @reviews.count %> Review(s)</p>
-  <% @reviews.each do |review| %>
-    <p>Author: <%= review.author %></p>
-    <p><%= review.content %></p>
-    <p><%= review.created_at %></p>
-  <% end %>
-</section>
+<% @reviews.map do |review| %>
+  <b><%= review[:author] %></b>: <%= review[:content] %><br><br><br>
+<% end %>

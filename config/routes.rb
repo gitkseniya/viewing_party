@@ -12,11 +12,16 @@ Rails.application.routes.draw do
 
     get "/dashboard", to: "dashboard#index"
     get "/discover", to: "discover#index"
-    get "/movies", to: "movies#index"
-    get "/movies/:id", to: "movies#show"
+
+    resources :movies, only: [:index, :show]
+
+    # get "/movies", to: "movies#index"
+    # get "/movies/:id", to: "movies#show"
 
     post '/search', to: 'movies#search'
 
     post '/friendship', to: 'friendships#create'
-  
+
+    resources :parties, only: [:new, :create]
+
 end
