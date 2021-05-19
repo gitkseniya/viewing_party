@@ -1,14 +1,14 @@
 class MoviesController < ApplicationController
-
   def index
-    if params[:search] && !params[:search].empty?
+    if params[:search].present?
       @movies = MovieService.search_result(params[:search])
-    elsif params[:top_40]
-      @movies = MovieService.top_40
+    elsif params[:top_forty]
+      @movies = MovieService.top_forty
     elsif params[:upcoming_movies]
       @movies = MovieService.upcoming_movies
-    else params[:search].empty?
-      flash[:notice] = "Please fill in movie title"
+    else
+      params[:search].empty?
+      flash[:notice] = 'Please fill in movie title'
       redirect_to discover_path
     end
   end

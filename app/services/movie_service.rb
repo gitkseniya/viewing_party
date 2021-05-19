@@ -1,8 +1,8 @@
 class MovieService
   class << self
-    def top_40
-      response1 = conn.get("/3/movie/top_rated", params: { "page": 1} )
-      response2 = conn.get("/3/movie/top_rated", params: { "page": 2} )
+    def top_forty
+      response1 = conn.get('/3/movie/top_rated', params: { "page": 1 })
+      response2 = conn.get('/3/movie/top_rated', params: { "page": 2 })
 
       result1 = parse_data(response1)
       result2 = parse_data(response1)
@@ -11,11 +11,13 @@ class MovieService
     end
 
     def search_result(name)
-      conn1 = Faraday.new(url: 'https://api.themoviedb.org', params: { "api_key": ENV['movie_token'], "language": 'en-US', "query": name, "page": 1 })
-      conn2 = Faraday.new(url: 'https://api.themoviedb.org', params: { "api_key": ENV['movie_token'], "language": 'en-US', "query": name, "page": 2 })
+      conn1 = Faraday.new(url: 'https://api.themoviedb.org',
+                          params: { "api_key": ENV['movie_token'], "language": 'en-US', "query": name, "page": 1 })
+      conn2 = Faraday.new(url: 'https://api.themoviedb.org',
+                          params: { "api_key": ENV['movie_token'], "language": 'en-US', "query": name, "page": 2 })
 
-      response1 = conn1.get("/3/search/movie")
-      response2 = conn2.get("/3/search/movie")
+      response1 = conn1.get('/3/search/movie')
+      response2 = conn2.get('/3/search/movie')
 
       result1 = parse_data(response1)
       result2 = parse_data(response2)
@@ -47,7 +49,6 @@ class MovieService
       response = conn.get("/3/movie/#{movie_id}/alternative_titles")
       parse_data(response)[:titles].first(5)
     end
-
 
     private
 
