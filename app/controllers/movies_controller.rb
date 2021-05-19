@@ -15,7 +15,6 @@ class MoviesController < ApplicationController
 
   def show
     @movie = MovieService.movie_info(params[:id])
-    # @movie = MovieFacade.movie_info(params[:id])
     @casts = MovieService.retrieve_cast(params[:id])
     @reviews = MovieService.retrieve_reviews(params[:id])
     @alternative_titles = MovieService.alternative_titles(params[:id])

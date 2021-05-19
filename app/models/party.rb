@@ -6,8 +6,4 @@ class Party < ApplicationRecord
   has_many :parties
   has_many :users, through: :parties
 
-  # def find_host(host_id)
-  #   # binding.pry
-  #   users.find(host_id)
-  # end
 end

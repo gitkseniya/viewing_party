@@ -1,6 +1,5 @@
 class PartiesController < ApplicationController
-  # before_action :find_movie
-  # helper_method :duration_time_check
+  helper_method :duration_time_check
 
   def new
     @movie = MovieService.movie_info(params[:api_movie_id])
