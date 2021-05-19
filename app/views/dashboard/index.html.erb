@@ -15,5 +15,8 @@
 
 <h2>Parties</h2>
 <% @current_user.parties.each do |party| %>
-<%= party.movie[:title] %>
+  <%= party.name %>
+    <% party.guest_lists.each do |guest_list| %>
+      <%= guest_list.friend.username %>
+    <% end %>
 <% end %>

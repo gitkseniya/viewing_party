@@ -11,6 +11,7 @@ class PartiesController < ApplicationController
     @movie = MovieService.movie_info(params[:api_movie_id])
     return if duration_time_check
     @party = current_user.parties.create(party_params)
+
     if @party.save
       redirect_to dashboard_path
     else
