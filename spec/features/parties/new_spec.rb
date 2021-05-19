@@ -23,7 +23,7 @@ RSpec.describe 'viewing party index', type: :feature do
     visit movie_path(155)
   end
 
-  it 'creates a viewing party for current user', :vcr do
+  it 'takes user to a create party form', :vcr do
 
     expect(page).to have_link('Create a Viewing Party')
     click_link 'Create a Viewing Party'
@@ -35,7 +35,18 @@ RSpec.describe 'viewing party index', type: :feature do
     click_link 'Create a Viewing Party'
 
     expect(page).to have_content("The Dark Knight")
-    expect(page).to have_field("Duration")
+    expect(page).to have_field("duration")
+    expect(page).to have_field(:start_time)
+
+    page.should have_css("input[type='checkbox']", id: "friends_#{@user2.id}")
+  end
+
+  it 'creates a new party', :vcr do
+    click_link 'Create a Viewing Party'
+
+    fill_in :start_time, with: Time.now
+    check(@user2.username)
+    click_button 'Create Viewing Party'
 
   end
 end

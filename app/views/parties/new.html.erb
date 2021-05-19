@@ -6,7 +6,7 @@
   <%= f.label :duration, "Duration:"%>
   <%= f.number_field :duration, value: @movie[:runtime], min: @movie[:runtime]  %>
   <%= f.label :start_time, "Start Time:" %>
-  <%= f.datetime_field :start_time %>
+  <%= f.datetime_field :start_time %><br>
   <%= f.label :friends, "Invite your friends:" %>
   <%= f.collection_check_boxes :friends, current_user.friends, :id, :username  %>
   <%= f.submit 'Create Viewing Party' %>
