@@ -5,6 +5,11 @@ class DashboardController < ApplicationController
       redirect_to login_path
     else
       @friends = current_user.friends
+
     end
+  end
+  private
+  def name
+     @movie[:title]
   end
 end

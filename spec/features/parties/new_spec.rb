@@ -47,6 +47,32 @@ RSpec.describe 'viewing party index', type: :feature do
     fill_in :start_time, with: Time.now
     check(@user2.username)
     click_button 'Create Viewing Party'
+  end
 
+  it 'Post created party to dashboard view', :vcr do
+    click_link 'Create a Viewing Party'
+
+
+    fill_in('duration', :with => 200)
+    fill_in :start_time, with: Time.now
+    check(@user2.username)
+    click_button 'Create Viewing Party'
+
+    expect(current_path).to eq(dashboard_path)
+    expect(page).to have_content("The Dark Knight")
+  end
+
+  xit 'party duration is less than movie runtime, return flash message and render new page', :vcr do
+    click_link 'Create a Viewing Party'
+
+    # expect(page).to have_field("duration")
+
+    fill_in('duration', :with => 20)
+    fill_in :start_time, with: Time.new(2021,6,21, 13,30,0, "+09:00").utc
+    check(@user2.username)
+    click_button 'Create Viewing Party'
+
+
+    expect(page).to have_content("Party cannot be shorter than the movie")
   end
 end
