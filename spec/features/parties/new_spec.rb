@@ -45,7 +45,7 @@ RSpec.describe 'viewing party index', type: :feature do
     click_link 'Create a Viewing Party'
 
     fill_in :start_time, with: Time.now
-    check(@user2.username)
+    check(@user2.email)
     click_button 'Create Viewing Party'
   end
 
@@ -54,7 +54,7 @@ RSpec.describe 'viewing party index', type: :feature do
 
     fill_in('duration', :with => 200)
     fill_in :start_time, with: Time.now
-    check(@user2.username)
+    check(@user2.email)
     click_button 'Create Viewing Party'
 
     expect(current_path).to eq(dashboard_path)
@@ -69,18 +69,18 @@ RSpec.describe 'viewing party index', type: :feature do
 
     fill_in('duration', :with => 20)
     fill_in :start_time, with: Time.new(2021,6,21, 13,30,0, "+09:00").utc
-    check(@user2.username)
+    check(@user2.email)
     click_button 'Create Viewing Party'
 
     expect(page).to have_content("Party cannot be shorter than the movie")
   end
 
-  it "Can invite friedns to Party", :vcr do
+  it "Can invite friends to Party", :vcr do
     click_link 'Create a Viewing Party'
 
     fill_in('duration', :with => 200)
     fill_in :start_time, with: Time.now
-    check(@user2.username)
+    check(@user2.email)
     click_button 'Create Viewing Party'
 
     expect(current_path).to eq(dashboard_path)
