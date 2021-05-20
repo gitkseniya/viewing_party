@@ -27,7 +27,6 @@ RSpec.describe 'user dashboard' do
 
       expect(page).to have_content("Parties")
       expect(page).to have_link(@party.name)
-      expect(page).to have_content(@party.start_time.strftime('%B %d, %Y %l:%M %p'))
       # expect(page).to have_content(@party.start_time.strftime("at %I:%M%p"))
       expect(page).to have_content(@user2.email)
       expect(page).to have_content(@user3.email)
