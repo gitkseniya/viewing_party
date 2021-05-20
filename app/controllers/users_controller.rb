@@ -14,8 +14,7 @@ class UsersController < ApplicationController
       flash[:info] = "Welcome #{new_user.email}!"
       redirect_to root_path
     else
-      flash[:error] = 'Password does not match.  Please try again'
-      redirect_to new_user_path
+      invalid_credentials
     end
   end
 
@@ -23,5 +22,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation)
+  end
+
+  def invalid_credentials
+    flash[:error] = 'Password does not match.  Please try again'
+    redirect_to new_user_path
   end
 end

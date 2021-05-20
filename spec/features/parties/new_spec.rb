@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe 'viewing party index', type: :feature do
   before :each do
-    @user1 = create(:user)
-    @user2 = create(:user)
-    @user3 = create(:user)
-    @user4 = create(:user)
+    @user1 = create(:user, username: "SadCoderShark101")
+    @user2 = create(:user, username: "pebbles")
+    @user3 = create(:user, username: "Gray")
+    @user4 = create(:user, username: "wat3r")
 
     @friendship1 = create(:friendship, user: @user1, friend: @user2)
     @friendship2 = create(:friendship, user: @user1, friend: @user3)

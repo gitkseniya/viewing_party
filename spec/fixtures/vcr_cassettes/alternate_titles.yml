@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.themoviedb.org/3/movie/12/alternative_titles?api_key=<api_key>&language=en-US
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.4.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Date:
+      - Thu, 20 May 2021 03:43:10 GMT
+      Server:
+      - openresty
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, HEAD, POST, PUT, DELETE, OPTIONS
+      Access-Control-Expose-Headers:
+      - ETag, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, Retry-After,
+        Content-Length, Content-Range
+      Cache-Control:
+      - public, max-age=28800
+      X-Memc:
+      - MISS, STORE
+      X-Memc-Key:
+      - b7c03441de70da5608dfea9bcac66ef6cae7b394
+      X-Memc-Age:
+      - '0'
+      X-Memc-Expires:
+      - '14666'
+      Last-Modified:
+      - '2021-04-06 14:17:24 +0000'
+      Vary:
+      - Accept-Encoding
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 48ea53c7edffa2cdbdc32f7d94966344.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - DEN50-C2
+      X-Amz-Cf-Id:
+      - eb1meIwb36ZzxVxgXjj3RSuIe2whNbPb8KKCKppMa-Lt8u4E-jd48g==
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJpZCI6MTIsInRpdGxlcyI6W3siaXNvXzMxNjZfMSI6IlVTIiwidGl0bGUiOiJGaW5kaW5nIE5lbW8gM0QiLCJ0eXBlIjoiM0QgdmVyc2lvbiJ9LHsiaXNvXzMxNjZfMSI6IkhLIiwidGl0bGUiOiLmtbflupXlpYflhbUiLCJ0eXBlIjoiQ2FudG9uZXNlIn0seyJpc29fMzE2Nl8xIjoiTkwiLCJ0aXRsZSI6Ik9wIHpvZWsgbmFhciBOZW1vIiwidHlwZSI6IiJ9LHsiaXNvXzMxNjZfMSI6IlVTIiwidGl0bGUiOiJEaXNuZXkgUGl4YXIgRmluZGluZyBOZW1vIiwidHlwZSI6ImluZm9ybWFsIGxvbmcgdGl0bGUifSx7Imlzb18zMTY2XzEiOiJDQSIsInRpdGxlIjoiVHJvdXZlciBOZW1vIiwidHlwZSI6IkZyZW5jaCBDYW5hZGEifSx7Imlzb18zMTY2XzEiOiJTQSIsInRpdGxlIjoi2YbZitmF2YgiLCJ0eXBlIjoiIn0seyJpc29fMzE2Nl8xIjoiU0UiLCJ0aXRsZSI6IkhpdHRhIE5lbW8gM0QiLCJ0eXBlIjoiM0QgdmVyc2lvbiJ9LHsiaXNvXzMxNjZfMSI6Ik1YIiwidGl0bGUiOiJCdXNjYW5kbyBBIE5lbW8gKDIwMDMpIiwidHlwZSI6IiJ9LHsiaXNvXzMxNjZfMSI6IlBUIiwidGl0bGUiOiJQcm9jdXJhbmRvIE5lbW8iLCJ0eXBlIjoiIn0seyJpc29fMzE2Nl8xIjoiVUEiLCJ0aXRsZSI6IlUgcG9zaHVrYWtoIE5lbW8iLCJ0eXBlIjoiIn0seyJpc29fMzE2Nl8xIjoiQkciLCJ0aXRsZSI6IlTFrXJzZW5ldG8gbmEgTmVtbyIsInR5cGUiOiIifSx7Imlzb18zMTY2XzEiOiJHUiIsInRpdGxlIjoiUHPDoWNobm9udGFzIHRvbiBOw6ltbyIsInR5cGUiOiIifSx7Imlzb18zMTY2XzEiOiJSUyIsInRpdGxlIjoiUG90cmFnYSB6YSBOZW1vbSIsInR5cGUiOiIifSx7Imlzb18zMTY2XzEiOiJSVSIsInRpdGxlIjoiViBwb2lza2FraCBOZW1vIiwidHlwZSI6IiJ9LHsiaXNvXzMxNjZfMSI6IkRFIiwidGl0bGUiOiJGaW5kZXQgTmVtbyIsInR5cGUiOiIifV19
+  recorded_at: Thu, 20 May 2021 03:43:10 GMT
+recorded_with: VCR 6.0.0
