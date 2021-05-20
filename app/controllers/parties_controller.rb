@@ -6,16 +6,16 @@ class PartiesController < ApplicationController
   end
 
   def create
-
     @movie = MovieService.movie_info(params[:api_movie_id])
     return if duration_time_check
+
     @party = current_user.parties.create(party_params)
     if @party.save
-       params[:friends].present?
+      params[:friends].present?
 
-        params[:friends].each do |friend|
+      params[:friends].each do |friend|
         GuestList.create(party_id: @party.id, friend_id: friend)
-        end
+      end
       redirect_to dashboard_path
     else
       render :new
@@ -34,7 +34,8 @@ class PartiesController < ApplicationController
 
   def duration_time_check
     return unless params[:duration].to_i < @movie[:runtime].to_i
-    flash[:error] = "Party cannot be shorter than the movie"
+
+    flash[:error] = 'Party cannot be shorter than the movie'
     render :new
   end
 end

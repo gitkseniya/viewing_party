@@ -8,8 +8,4 @@ class DashboardController < ApplicationController
 
     end
   end
-  private
-  def name
-     @movie[:title]
-  end
 end
