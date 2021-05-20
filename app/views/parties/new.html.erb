@@ -8,6 +8,6 @@
   <%= f.label :start_time, "Start Time:" %>
   <%= f.datetime_field :start_time %><br>
   <%= f.label :friends, "Invite your friends:" %>
-  <%= f.collection_check_boxes :friends, current_user.friends, :id, :username  %>
+  <%= f.collection_check_boxes :friends, current_user.friends, :id, :email, hidden_field: :id  %>
   <%= f.submit 'Create Viewing Party' %>
 <% end %>

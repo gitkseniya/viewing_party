@@ -16,6 +16,7 @@
 <h2>Parties</h2>
 <% @current_user.parties.each do |party| %>
   <%= link_to party.name, movie_path(party.api_movie_id) %><br>
+  <%= party.start_time.strftime("%m/%d/%Y at %I:%M%p") %>
   <p>invited Friends </p
   <b><%= @current_user.email %></b><br>
     <% party.friends.each do |friend| %>
