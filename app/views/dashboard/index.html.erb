@@ -15,7 +15,7 @@
 
 <h2>Parties</h2>
 <% @current_user.parties.each do |party| %>
-  <%= party.name %><br>
+  <%= link_to party.name, movie_path(party.api_movie_id) %><br>
   <p>invited Friends </p
   <b><%= @current_user.email %></b><br>
     <% party.friends.each do |friend| %>

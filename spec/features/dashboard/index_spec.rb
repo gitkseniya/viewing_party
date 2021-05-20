@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'user dashboard' do
+RSpec.describe 'user dashboard' do
   before(:each) do
     @user1 = create(:user)
     @user2 = create(:user)
