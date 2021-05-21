@@ -15,7 +15,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[Viewing Party](https://intense-harbor-71203.herokuapp.com/)is an application in which users can explore movie options and create a viewing party event for the user and friend's.
+[Viewing Party](https://intense-harbor-71203.herokuapp.com/) is an application in which users can explore movie options and create a viewing party event for the user and friend's.
 
 User stories were created by [Turing School](https://github.com/turingschool-examples/viewing_party).
 
