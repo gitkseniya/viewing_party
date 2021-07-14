@@ -14,8 +14,6 @@
  *= require_self
  */
 
-@import "bootstrap";
-
 body {
   display: flex;
   min-height: 100vh;
