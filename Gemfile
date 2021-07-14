@@ -7,6 +7,7 @@ end
 
 ruby '2.5.3'
 
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'rails', '5.2.5'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.7'

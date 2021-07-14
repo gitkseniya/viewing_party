@@ -14,10 +14,28 @@
  *= require_self
  */
 
+@import "bootstrap";
+
 body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+
+  color: gainsboro;
+
+  background-image: url(https://i.ibb.co/bPZzwWb/red-movie-theater-seats.jpg);
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-position: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  height: 100%;
+}
+
+body, html {
+  height: 100%;
 }
 
 main {
